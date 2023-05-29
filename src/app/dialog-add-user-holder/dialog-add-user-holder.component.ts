@@ -60,6 +60,7 @@ export class DialogAddUserHolderComponent{
     this.user.email = email;
     this.user.password = password;
     this.user.telephone = +telephone;
+    this.user.color = this.generateColors();
   }
 
   addUserToFirestore() {
@@ -68,6 +69,11 @@ export class DialogAddUserHolderComponent{
     .add(this.user.toJSON())
     .then((result: any) => {
     });
+  }
+
+  generateColors() {
+    let h = Math.floor(Math.random() * 359);
+    return `hsl(${h}, 100%, 90%)`;
   }
 
   checkPhoneNumber(telephone, numberformat) {

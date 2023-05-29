@@ -17,7 +17,7 @@
             <mat-label>Email</mat-label>
             <input id="email" type="email" matInput 
             formControlName="userEmail" placeholder="Your email*" required>
-            <label class="red-required" *ngIf="emailInvalid">Not a valid email</label>
+            <label class="red-required" *ngIf="emailInvalid">enter a valid email</label>
         </mat-form-field>
         <div>
             <mat-form-field class="mr-16" appearance="outline">
@@ -29,7 +29,7 @@
                 <mat-label>Telephone</mat-label>
                 <input id="telephone" type="tel" matInput
                  placeholder="Your Telephone">
-                <label class="red-required" *ngIf="phoneInvalid">Not a valid number</label>
+                 <label class="red-required" *ngIf="phoneInvalid">enter a valid number</label>
             </mat-form-field>
         </div>
         <div mat-dialog-actions>

@@ -4,6 +4,7 @@ export class User {
     public email: string;
     public password: string;
     public telephone: number;
+    public color: string;
     public ID: number;                     // user ID
     public img: any;                       // img file or path to img
     public title: string;                  // title or extra detail of person
@@ -19,6 +20,7 @@ export class User {
         this.email = obj ? obj.email : '';
         this.password = obj ? obj.email : '';
         this.telephone = obj ? obj.telephone : '';
+        this.color = obj ? obj.color : '';
         this.ID = obj ? obj.ID : '';
         this.img = obj ? obj.img : '';;
         this.title = obj ? obj.title : '';;
@@ -37,6 +39,7 @@ export class User {
             email: this.email,
             password: this.password,
             telephone: this.telephone,
+            color: this.color,
             ID: this.ID,
             img: this.img,
             title: this.title,

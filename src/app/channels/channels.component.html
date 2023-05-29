@@ -4,7 +4,7 @@
             <div>
                 <div *ngFor="let singleMessage of channel.messages; let i = index" class="message-container">
                     <div class="profile-img">
-                        <img src="../assets/img/profile.png">
+                        <img [style.background-color]="singleMessage.user.color" [style.border-color]="singleMessage.user.color" src="../assets/img/profile.png">
                     </div>
 
                     <div>

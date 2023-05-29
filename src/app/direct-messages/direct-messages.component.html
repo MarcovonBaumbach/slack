@@ -4,7 +4,9 @@
         <div *ngIf="currentUserMessages">
             <div *ngFor="let singleMessage of currentUserMessages; let i = index" class="message-container">
                 <div class="profile-img">
-                    <span class="letter">{{ singleMessage.firstName.split('')[0] }}</span>
+                    <span [style.background-color]="singleMessage.color" class="letter">
+                        {{ singleMessage.firstName.split('')[0] }}
+                    </span>
                 </div>
 
                 <div>

@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', component: InitialPageComponent },
   {
     path: 'main/:id', component: MainComponent,
-    title: 'Profil',
+    title: 'SlackClone',
     children: [
       { path: 'profil', component: UserProfileComponent, outlet: 'body' },
       { path: 'channels/:id', component: ChannelsComponent, outlet: 'body' },

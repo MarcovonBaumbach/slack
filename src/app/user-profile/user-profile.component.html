@@ -5,7 +5,7 @@
         <p>{{user.status}}</p>
     </div>
     <div class="user_profile_contact">
-        <a [href]="'mailto:' + user.email">{{user.email}}</a>
-        <a [href]="'tel:'+ user.telephone">{{user.telephone}}</a>
+        Email: <a class="link_style" [href]="'mailto:' + user.email">{{user.email}}</a>
+        Phone Number: <a class="link_style" [href]="'tel:'+ user.telephone">{{user.telephone}}</a>
     </div>
 </div>

@@ -89,7 +89,8 @@ export class DirectMessagesComponent implements OnInit {
         text: this.message,
         time: date.toLocaleString(),
         firstName: this.currentUser.firstName,
-        lastName: this.currentUser.lastName
+        lastName: this.currentUser.lastName,
+        color: this.currentUser.color
       });
   }
 }

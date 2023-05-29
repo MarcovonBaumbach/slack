@@ -32,7 +32,7 @@
         (click)="highlightMenuItem('user', i)" 
         [routerLink]="['/main/', urlID,{ outlets: {body:['direct_messages', user.ID]}}]">
         <div class="contact_container">
-            <span class="letter">{{ firstLetter[i] }}</span>
+            <span [style.background-color]="user.color"  class="letter">{{ firstLetter[i] }}</span>
             <span>{{ user.firstName }} {{ user.lastName }}</span>
         </div>
     </div>
