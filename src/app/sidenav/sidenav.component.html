@@ -1,0 +1,39 @@
+<div class="menu-header">
+    <img *ngIf="channelsVisible == false" (click)="showChannels(true)" src="assets/img/arrow-right.png">
+    <img *ngIf="channelsVisible" (click)="showChannels(false)" src="assets/img/arrow-down.png">
+    <span>Channels</span>
+</div>
+<div *ngIf="channelsVisible" class="channels">
+    <div *ngFor="let channel of channels$ | async; let i = index" 
+        id="channel{{ i }}" 
+        class="channel-item"
+        (click)="highlightMenuItem('channel', i)" 
+        [routerLink]="['/main/', urlID,{ outlets: {body:['channels', channel.ID]}}]">
+        <div class="channel_container">
+            <span>#</span>
+            <span>{{ channel.title }}</span>
+        </div>
+    </div>
+</div>
+<div class="channel-item add-channel" (click)="openAddChannelDialog()">
+    <span class="add-icon">+</span>
+    <span>Channels hinzufügen</span>
+</div>
+
+<div class="menu-header">
+    <img *ngIf="usersVisible == false" (click)="showUsers(true)" src="assets/img/arrow-right.png">
+    <img *ngIf="usersVisible" (click)="showUsers(false)" src="assets/img/arrow-down.png">
+    <span>Direktnachrichten</span>
+</div>
+<div *ngIf="usersVisible" class="channels">
+    <div *ngFor="let user of users$ | async; let i = index" 
+        id="user{{ i }}" 
+        class="channel-item user-item"
+        (click)="highlightMenuItem('user', i)" 
+        [routerLink]="['/main/', urlID,{ outlets: {body:['direct_messages', user.ID]}}]">
+        <div class="contact_container">
+            <span class="letter">{{ firstLetter[i] }}</span>
+            <span>{{ user.firstName }} {{ user.lastName }}</span>
+        </div>
+    </div>
+</div>

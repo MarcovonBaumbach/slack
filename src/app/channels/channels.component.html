@@ -1,0 +1,67 @@
+<div *ngIf="channel">
+    <div class="body-container">
+        <div class="body-flex">
+            <div>
+                <div *ngFor="let singleMessage of channel.messages; let i = index" class="message-container">
+                    <div class="profile-img">
+                        <img src="../assets/img/profile.png">
+                    </div>
+
+                    <div>
+                        <div class="headline">
+                            <b>{{ singleMessage.user.firstName }} {{ singleMessage.user.lastName }}</b>
+                            <span>{{ singleMessage.time }}</span>
+                        </div>
+
+                        <div>{{ singleMessage.text }}</div>
+
+                        <div class="response" (click)="openAnswerContainer(i)">
+                            <img src="../assets/img/response.png">
+                            <span *ngIf="singleMessage.answers.length != 1">{{ singleMessage.answers.length }}
+                                Antworten</span>
+                            <span *ngIf="singleMessage.answers.length == 1">{{ singleMessage.answers.length }}
+                                Antwort</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <textarea rows="4" type="text" placeholder="Nachricht an #{{ channel.title }}"
+                    [(ngModel)]="message"></textarea>
+                <button mat-raised-button (click)="saveMessage()">send</button>
+            </div>
+        </div>
+
+        <div class="answer-container" *ngIf="dataservice.answerContainer == true">
+            <div class="answer-container-topic">
+                <div class="headline">
+                    <b>{{ channel.messages[messageIndex].user.firstName }} {{
+                        channel.messages[messageIndex].user.lastName
+                        }}</b>
+                    <span>{{ channel.messages[messageIndex].time }}</span>
+                </div>
+                <div>{{ channel.messages[messageIndex].text }}</div>
+            </div>
+
+            <div *ngFor="let singleAnswer of channel.messages[messageIndex].answers" class="message-container">
+                <img class="answer-image" src="../assets/img/response.png">
+
+                <div>
+                    <div class="headline">
+                        <b>{{ singleAnswer.user.firstName }} {{ singleAnswer.user.lastName }}</b>
+                        <span>{{ singleAnswer.time }}</span>
+                    </div>
+
+                    <div>{{ singleAnswer.text }}</div>
+                </div>
+            </div>
+
+            <div class="input-container input-container-answer">
+                <textarea type="text" autofocus placeholder="antworten..."
+                    [(ngModel)]="answer"></textarea>
+                <button mat-raised-button (click)="saveAnswer()">send</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+{
+  "targets": {
+
+    "slack-4c371": {
+      "hosting": {
+        "Slack-clone": [
+          "slack-4c371"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "slack-4c371"
+  }
+}

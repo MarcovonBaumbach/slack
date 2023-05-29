@@ -1,0 +1,27 @@
+<div class="body-container">
+    <div class="body-flex">
+        <div *ngIf="!currentUserMessages"></div>
+        <div *ngIf="currentUserMessages">
+            <div *ngFor="let singleMessage of currentUserMessages; let i = index" class="message-container">
+                <div class="profile-img">
+                    <span class="letter">{{ singleMessage.firstName.split('')[0] }}</span>
+                </div>
+
+                <div>
+                    <div class="headline">
+                        <b>{{ singleMessage.firstName }} {{ singleMessage.lastName }}</b>
+                        <span>{{ singleMessage.time }}</span>
+                    </div>
+
+                    <div>{{ singleMessage.text }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-container">
+            <textarea rows="4" type="text" placeholder="private Nachricht"
+                [(ngModel)]="message"></textarea>
+            <button mat-raised-button (click)="saveMessage()">send</button>
+        </div>
+    </div>
+</div>

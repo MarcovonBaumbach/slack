@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Create a new Channel</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <input matInput placeholder="Channel name" [(ngModel)]="newChannel">
+  </mat-form-field><br>
+  <label class="color-red" *ngIf="showErrorMessage">Channel already exists</label>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="saveChannel()" cdkFocusInitial>Save</button>
+</div>

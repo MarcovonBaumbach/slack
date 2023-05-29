@@ -1,0 +1,35 @@
+<!--<div class="log_in_holder">
+    The following button is just a holder to bypass the login section
+    <button (click)="bypassLogIn()">Log In</button>
+    <button (click)="openDialogAddUser()">Add user - holder</button> 
+    <p>P.S. Smile and have a wanderfull day</p>
+</div>--> <!--baselogin platzhalter-->
+
+
+
+<div class="login-container">
+    <img class="logo" src="../assets/img/logo_black.png">
+    <mat-card>
+        <mat-card-title>Login</mat-card-title>
+
+        <form (ngSubmit)="loginAsUser()" [formGroup]="loginForm">
+            <div>
+                <mat-form-field>
+                    <mat-label>Enter your Email</mat-label>
+                    <input matInput type="email" formControlName="email" required #emailSignup>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Enter your Password</mat-label>
+                    <input matInput type="password" formControlName="password" required #passswordSignup>
+                </mat-form-field>
+            </div>
+            <div class="button-holder">
+                <button type="button" (click)="onSignup(emailSignup.value, passswordSignup.value)" [disabled]="loginForm.invalid" mat-raised-button color="primary">Login</button>
+                <button type="button" (click)="bypassLogIn()" mat-raised-button>Guest Login</button>
+                <button (click)="openDialogAddUser()" mat-raised-button>Sign Up</button>
+            </div>
+        </form>
+    </mat-card>
+</div>
