@@ -21,8 +21,8 @@
         </div>
 
         <div class="input-container">
-            <textarea rows="4" type="text" placeholder="private Nachricht"
-                [(ngModel)]="message"></textarea>
+            <textarea style="resize: none;" rows="4" type="text" placeholder="private Nachricht"
+                [(ngModel)]="privateMessage"></textarea>
             <button mat-raised-button (click)="saveMessage()">send</button>
         </div>
     </div>

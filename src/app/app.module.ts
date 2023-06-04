@@ -36,6 +36,7 @@ import { DialogAddStatusComponent } from './dialog-add-status/dialog-add-status.
 import { MatSelectModule } from '@angular/material/select';
 import { ChannelsComponent } from './channels/channels.component';
 import { DirectMessagesComponent } from './direct-messages/direct-messages.component';
+import { SearchUserProfileComponent } from './search-user-profile/search-user-profile.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DirectMessagesComponent } from './direct-messages/direct-messages.compo
     PageNotFoundComponent,
     DialogAddStatusComponent,
     ChannelsComponent,
-    DirectMessagesComponent
+    DirectMessagesComponent,
+    SearchUserProfileComponent
   ],
   imports: [
     BrowserModule,

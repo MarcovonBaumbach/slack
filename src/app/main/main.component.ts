@@ -15,6 +15,7 @@ import { DataService } from '../data.service';
 })
 export class MainComponent {
   user = this.dataservice.user;
+  users$: Observable<any>;
   urlID: string;
   userRoute: any;
   userStatus: string;
@@ -22,19 +23,14 @@ export class MainComponent {
   public userHolder: any;
   color: string;
   docSnap: DocumentSnapshot;
-
-
-
-
-  searchlist: Array<any> = ['Liu', 'Marco', 'Danny'];
   searchValue: string;
-  // panelOpenState = false;
 
   constructor(public dialog: MatDialog,
     private route: ActivatedRoute,
     private firestore: Firestore,
     public dialogAddStatus: MatDialog,
     private dataservice: DataService) { 
+      this.users$ = collectionData(collection(this.firestore, 'users'));
     }
 
 
@@ -59,12 +55,12 @@ export class MainComponent {
   } 
 
   clearSearch() {
-    this.searchlist = []
+    //this.searchlist = []
   }
 
   search() {
-    this.searchlist.unshift(this.searchValue);
-    this.searchValue = '';
+    //this.searchlist.unshift(this.searchValue);
+    //this.searchValue = '';
   }
 
   // getUserStatus() {

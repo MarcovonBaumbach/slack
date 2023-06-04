@@ -1,0 +1,11 @@
+<div class="user_profile_wrapper">
+    <div class="user_profile_img"><img src="./assets/img/user.png"></div>
+    <div class="user_profile_infos">
+        <h2>{{user.firstName}} {{user.lastName}}</h2>
+        <p>{{user.status}}</p>
+    </div>
+    <div class="user_profile_contact">
+        Email: <a class="link_style" [href]="'mailto:' + user.email">{{user.email}}</a>
+        Phone Number: <a class="link_style" [href]="'tel:'+ user.telephone">{{user.telephone}}</a>
+    </div>
+</div>

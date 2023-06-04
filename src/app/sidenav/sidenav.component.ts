@@ -81,6 +81,8 @@ export class SidenavComponent {
   }
 
   highlightMenuItem(param, index) {
+    this.dataService.param = param;
+    this.dataService.index = index;
     this.dataService.answerContainer = false;
     this.channels$.forEach((channel) => {
       for (let i = 0; i < channel.length; i++) {
@@ -95,7 +97,7 @@ export class SidenavComponent {
           document.getElementById(`user${i}`).classList.remove('background-focused');
         }
       }
-      document.getElementById(param + index).classList.add('background-focused');
+      document.getElementById(this.dataService.param + this.dataService.index).classList.add('background-focused');
     });
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { DocumentSnapshot, Firestore, collection, collectionData, doc, getDoc, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -97,5 +97,9 @@ export class ChannelsComponent implements OnInit {
   openAnswerContainer(index: number) {
     this.messageIndex = index;
     this.dataservice.answerContainer = true;
+  }
+
+  closeAnswerContainer() {
+    this.dataservice.answerContainer = false;
   }
 }

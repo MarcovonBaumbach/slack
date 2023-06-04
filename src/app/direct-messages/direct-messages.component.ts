@@ -20,7 +20,7 @@ export class DirectMessagesComponent implements OnInit {
   userToChatID: string;
   docSnap: DocumentSnapshot;
   docSnapUser: DocumentSnapshot;
-  message: string;
+  privateMessage: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -58,14 +58,14 @@ export class DirectMessagesComponent implements OnInit {
   }
 
   saveMessage() {
-    if (this.message) {
+    if (this.privateMessage) {
       let newMessages = []
       if (this.currentUserMessages) {
         newMessages = this.currentUserMessages;
       }
       this.pushMessageInArray(newMessages);
       this.updateDatabase(newMessages);      
-      this.message = '';
+      this.privateMessage = '';
       setTimeout(() => {
         this.router.navigateByUrl(`/main/${this.userID}/(body:direct_messages/${this.urlID})`);
       }, 1000);
@@ -86,7 +86,7 @@ export class DirectMessagesComponent implements OnInit {
   pushMessageInArray(newMessages) {
     let date = new Date();
       newMessages.push({
-        text: this.message,
+        text: this.privateMessage,
         time: date.toLocaleString(),
         firstName: this.currentUser.firstName,
         lastName: this.currentUser.lastName,

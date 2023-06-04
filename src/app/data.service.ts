@@ -7,6 +7,8 @@ export class DataService {
   user;
   answerContainer: boolean = false;
   selectedChannel;
+  param;
+  index;
   constructor() {
    
   }
