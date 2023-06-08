@@ -47,7 +47,6 @@ export class ChannelsComponent implements OnInit {
             this.channelID = channels[i]['id'];
             this.docSnap = await getDoc(doc(this.firestore, 'channels', channels[i]['id']));
             this.channel = this.docSnap.data();
-            console.log('current channel:', this.channel);
           }
         }
       });
@@ -83,7 +82,6 @@ export class ChannelsComponent implements OnInit {
       this.docSnapUser = await getDoc(doc(this.firestore, 'users', this.userID));
       this.currentUser = this.docSnapUser.data();
     }
-    console.log('user:', this.currentUser);
   }
 
   async saveMessage() {

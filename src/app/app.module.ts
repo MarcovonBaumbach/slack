@@ -39,6 +39,7 @@ import { DirectMessagesComponent } from './direct-messages/direct-messages.compo
 import { SearchUserProfileComponent } from './search-user-profile/search-user-profile.component';
 import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
 import { DialogEditAnswerComponent } from './dialog-edit-answer/dialog-edit-answer.component';
+import { DialogEditDirectMessageComponent } from './dialog-edit-direct-message/dialog-edit-direct-message.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { DialogEditAnswerComponent } from './dialog-edit-answer/dialog-edit-answ
     DirectMessagesComponent,
     SearchUserProfileComponent,
     DialogEditComponent,
-    DialogEditAnswerComponent
+    DialogEditAnswerComponent,
+    DialogEditDirectMessageComponent
   ],
   imports: [
     BrowserModule,

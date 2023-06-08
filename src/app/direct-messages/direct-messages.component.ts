@@ -3,6 +3,8 @@ import { DocumentSnapshot, Firestore, collection, collectionData, doc, getDoc, u
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DataService } from '../data.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DialogEditDirectMessageComponent } from '../dialog-edit-direct-message/dialog-edit-direct-message.component';
 
 @Component({
   selector: 'app-direct-messages',
@@ -26,7 +28,8 @@ export class DirectMessagesComponent implements OnInit {
     private route: ActivatedRoute,
     private firestore: Firestore,
     public dataservice: DataService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     this.users$ = collectionData(collection(this.firestore, 'users'), { idField: 'id' });
   }
@@ -92,5 +95,17 @@ export class DirectMessagesComponent implements OnInit {
         lastName: this.currentUser.lastName,
         color: this.currentUser.color
       });
+  }
+
+  openEditDirectMessageDialog(singleMessage, i) {
+    this.dialog.open(DialogEditDirectMessageComponent, { 
+      data: {
+        singleMessage,
+        i,
+        currentUserMessages: this.currentUserMessages,
+        userID: this.userID,
+        userToChatID: this.userToChatID
+      }
+    });
   }
 }

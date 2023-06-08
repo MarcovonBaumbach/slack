@@ -86,3 +86,9 @@
     height: 24px;
     color: black;
 }
+
+.edit-img:hover {
+    cursor: pointer;
+    filter: brightness(1.5);
+    transform: scale(1.1);
+}

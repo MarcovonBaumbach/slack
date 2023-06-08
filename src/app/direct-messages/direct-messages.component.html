@@ -13,6 +13,10 @@
                     <div class="headline">
                         <b>{{ singleMessage.firstName }} {{ singleMessage.lastName }}</b>
                         <span>{{ singleMessage.time }}</span>
+                        <img *ngIf="currentUser.firstName == singleMessage.firstName && currentUser.lastName == singleMessage.lastName"
+                             src="../assets/img/edit.png"
+                             class="edit-img"
+                             (click)="openEditDirectMessageDialog(singleMessage, i)">
                     </div>
 
                     <div>{{ singleMessage.text }}</div>
