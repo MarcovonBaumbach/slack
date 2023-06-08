@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { DocumentSnapshot, Firestore, collection, collectionData, doc, getDoc, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
+import { DialogEditAnswerComponent } from '../dialog-edit-answer/dialog-edit-answer.component';
 
 @Component({
   selector: 'app-channels',
@@ -27,7 +30,8 @@ export class ChannelsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private firestore: Firestore,
-    public dataservice: DataService
+    public dataservice: DataService,
+    private dialog: MatDialog
   ) {
     this.channels$ = collectionData(collection(this.firestore, 'channels'), { idField: 'id' });
     this.getCurrentUser();
@@ -48,6 +52,29 @@ export class ChannelsComponent implements OnInit {
         }
       });
     })
+  }
+
+  openEditDialog(singleMessage, i) {
+    this.dialog.open(DialogEditComponent, { 
+      data: {
+        singleMessage,
+        i,
+        channel: this.channel,
+        channelID: this.channelID
+      }
+    });
+  }
+
+  openEditAnswerDialog(singleAnswer, i, messageIndex) {
+    this.dialog.open(DialogEditAnswerComponent, { 
+      data: {
+        singleAnswer,
+        i,
+        messageIndex,
+        channel: this.channel,
+        channelID: this.channelID
+      }
+    });
   }
 
   async getCurrentUser() {

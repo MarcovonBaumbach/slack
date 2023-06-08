@@ -13,7 +13,8 @@
                             <span>{{ singleMessage.time }}</span>
                             <img *ngIf="currentUser.firstName == singleMessage.user.firstName && currentUser.lastName == singleMessage.user.lastName"
                              src="../assets/img/edit.png"
-                             class="edit-img">
+                             class="edit-img"
+                             (click)="openEditDialog(singleMessage, i)">
                         </div>
 
                         <div>{{ singleMessage.text }}</div>
@@ -50,7 +51,7 @@
                 <div>{{ channel.messages[messageIndex].text }}</div>
             </div>
 
-            <div *ngFor="let singleAnswer of channel.messages[messageIndex].answers" class="message-container">
+            <div *ngFor="let singleAnswer of channel.messages[messageIndex].answers, let i = index" class="message-container">
                 <img class="answer-image" src="../assets/img/response.png">
 
                 <div>
@@ -59,7 +60,8 @@
                         <span>{{ singleAnswer.time }}</span>
                         <img *ngIf="currentUser.firstName == singleAnswer.user.firstName && currentUser.lastName == singleAnswer.user.lastName"
                              src="../assets/img/edit.png"
-                             class="edit-img">
+                             class="edit-img"
+                             (click)="openEditAnswerDialog(singleAnswer, i, messageIndex)">
                     </div>
 
                     <div>{{ singleAnswer.text }}</div>

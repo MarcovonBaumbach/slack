@@ -37,6 +37,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { ChannelsComponent } from './channels/channels.component';
 import { DirectMessagesComponent } from './direct-messages/direct-messages.component';
 import { SearchUserProfileComponent } from './search-user-profile/search-user-profile.component';
+import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
+import { DialogEditAnswerComponent } from './dialog-edit-answer/dialog-edit-answer.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { SearchUserProfileComponent } from './search-user-profile/search-user-pr
     DialogAddStatusComponent,
     ChannelsComponent,
     DirectMessagesComponent,
-    SearchUserProfileComponent
+    SearchUserProfileComponent,
+    DialogEditComponent,
+    DialogEditAnswerComponent
   ],
   imports: [
     BrowserModule,
