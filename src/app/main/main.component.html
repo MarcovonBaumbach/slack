@@ -12,13 +12,13 @@
             <mat-expansion-panel hideToggle>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        <input [(ngModel)]="searchValue" name="searchValue" placeholder="Search User..." matInput>
+                        <input (keydown.Space)="$event.stopPropagation()" [(ngModel)]="searchValue" name="searchValue" placeholder="Search User..." matInput>
                         <mat-icon (click)="search()" mat-button>search</mat-icon>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-card-actions class="search_history">
                     <button *ngFor="let user of users$ | async" [routerLink]="['/main/', urlID,{ outlets: {body:['profil', user.ID]}}]"># {{user.firstName}} {{user.lastName}}</button>
-                    <button class="clear_search_btn" mat-button (click)="clearSearch()">clear search</button>
+                    <button></button>
                 </mat-card-actions>
             </mat-expansion-panel>
         </form>

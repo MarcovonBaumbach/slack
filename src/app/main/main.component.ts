@@ -29,9 +29,10 @@ export class MainComponent {
     private route: ActivatedRoute,
     private firestore: Firestore,
     public dialogAddStatus: MatDialog,
-    private dataservice: DataService) { 
-      this.users$ = collectionData(collection(this.firestore, 'users'));
-    }
+    private dataservice: DataService,
+    private router: Router) {
+    this.users$ = collectionData(collection(this.firestore, 'users'));
+  }
 
 
   ngOnInit() {
@@ -52,15 +53,25 @@ export class MainComponent {
 
   onOutletLoaded(ChannelsComponent) {
     ChannelsComponent.currentUser = this.user;
-  } 
-
-  clearSearch() {
-    //this.searchlist = []
   }
 
   search() {
-    //this.searchlist.unshift(this.searchValue);
-    //this.searchValue = '';
+    let userFound = false;
+    let searchedUser = this.searchValue.split(" ");
+    this.users$.forEach((users) => {
+      for (let i = 0; i < users.length; i++) {
+        for (let j = 0; j < searchedUser.length; j++) {
+          if (users[i].firstName.toLowerCase().includes(searchedUser[j].toLowerCase()) || 
+              users[i].lastName.toLowerCase().includes(searchedUser[j].toLowerCase())) {
+            this.router.navigateByUrl(`/main/${this.urlID}/(body:profil/${users[i].ID})`);
+            userFound = true;
+          }
+        }
+      }
+      if (userFound == false) {
+        window.alert('Es wurde kein Kontakt zu Ihrer Eingabe gefunden.');
+      }
+    });
   }
 
   // getUserStatus() {
