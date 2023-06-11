@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/models/user.class';
+import { DialogEditProfileComponent } from '../dialog-edit-profile/dialog-edit-profile.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -47,7 +48,15 @@ export class UserProfileComponent implements OnInit {
           // this.getStatus(user.status);
         });
     })
+  }
 
+  openEditProfileDialog() {
+    this.dialog.open(DialogEditProfileComponent, { 
+      data: {
+        user: this.user,
+        urlID: this.urlID
+      }
+    });
   }
 
 

@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Edit your Profile</h1>
+<form
+  [formGroup]="userForm"
+>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Edit your email</mat-label>
+    <input id="userEmail" matInput formControlName="email" type="email" placeholder={{user.email}} required>
+    <mat-error *ngIf="emailInvalid">Please enter a valid email address</mat-error>
+  </mat-form-field> <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Edit your phone number</mat-label>
+    <input id="userTelephone" matInput type="number" value={{user.telephone}}>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="saveEdit()" cdkFocusInitial>Save</button>
+</div>
+</form>

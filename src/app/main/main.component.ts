@@ -59,19 +59,24 @@ export class MainComponent {
     let userFound = false;
     let searchedUser = this.searchValue.split(" ");
     this.users$.forEach((users) => {
-      for (let i = 0; i < users.length; i++) {
-        for (let j = 0; j < searchedUser.length; j++) {
-          if (users[i].firstName.toLowerCase().includes(searchedUser[j].toLowerCase()) || 
-              users[i].lastName.toLowerCase().includes(searchedUser[j].toLowerCase())) {
-            this.router.navigateByUrl(`/main/${this.urlID}/(body:profil/${users[i].ID})`);
-            userFound = true;
-          }
+      this.redirectToUserProfileIfExists(users, searchedUser, userFound);    
+      this.searchValue = '';
+    });
+  }
+
+  redirectToUserProfileIfExists(users, searchedUser, userFound) {
+    for (let i = 0; i < users.length; i++) {
+      for (let j = 0; j < searchedUser.length; j++) {
+        if (users[i].firstName.toLowerCase().includes(searchedUser[j].toLowerCase()) || 
+            users[i].lastName.toLowerCase().includes(searchedUser[j].toLowerCase())) {
+          this.router.navigateByUrl(`/main/${this.urlID}/(body:profil/${users[i].ID})`);
+          userFound = true;
         }
       }
-      if (userFound == false) {
-        window.alert('Es wurde kein Kontakt zu Ihrer Eingabe gefunden.');
-      }
-    });
+    }
+    if (userFound == false) {
+      window.alert('Es wurde kein Kontakt zu Ihrer Eingabe gefunden.');
+    }
   }
 
   // getUserStatus() {

@@ -1,0 +1,22 @@
+.page-container {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    font-size: 30px;
+    img {    
+        height: 40px;
+        width: auto;
+    }
+}
+
+.description {
+    li {
+        padding-top: 8px;
+    }
+}

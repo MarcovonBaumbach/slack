@@ -5,7 +5,15 @@
         <p>{{user.status}}</p>
     </div>
     <div class="user_profile_contact">
-        Email: <a class="link_style" [href]="'mailto:' + user.email">{{user.email}}</a>
-        Phone Number: <a class="link_style" [href]="'tel:'+ user.telephone">{{user.telephone}}</a>
+        Email: 
+        <div>
+            <a class="link_style" [href]="'mailto:' + user.email">{{user.email}}</a>
+            <img src="../assets/img/edit.png" class="edit-img" (click)="openEditProfileDialog()">
+        </div>
+        Phone Number: 
+        <div>
+            <a class="link_style" [href]="'tel:'+ user.telephone">{{user.telephone}}</a>
+            <img src="../assets/img/edit.png" class="edit-img" (click)="openEditProfileDialog()">
+        </div>
     </div>
 </div>

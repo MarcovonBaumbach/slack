@@ -65,4 +65,16 @@ $text-color: rgb(200, 200, 200);
             border-bottom: 1px solid;
         }
     }
+
+    img {
+        height: 16px;
+        width: 16px;
+        padding-left: 8px;
+    }
+}
+
+.edit-img:hover {
+    cursor: pointer;
+    filter: brightness(1.5);
+    transform: scale(1.1);
 }

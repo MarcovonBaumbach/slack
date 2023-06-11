@@ -6,7 +6,6 @@
                 <mat-icon (click)="drawer.toggle()">menu</mat-icon>
             </button> -->
             <img class="logo" src="../assets/img/logo_white.png">
-            <span class="example-spacer"></span>
         </div>
         <form class="header_center">
             <mat-expansion-panel hideToggle>
@@ -16,10 +15,10 @@
                         <mat-icon (click)="search()" mat-button>search</mat-icon>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <mat-card-actions class="search_history">
+                <!-- <mat-card-actions class="search_history">
                     <button *ngFor="let user of users$ | async" [routerLink]="['/main/', urlID,{ outlets: {body:['profil', user.ID]}}]"># {{user.firstName}} {{user.lastName}}</button>
                     <button></button>
-                </mat-card-actions>
+                </mat-card-actions> -->
             </mat-expansion-panel>
         </form>
         <div class="header_right">

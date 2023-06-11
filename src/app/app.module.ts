@@ -40,6 +40,8 @@ import { SearchUserProfileComponent } from './search-user-profile/search-user-pr
 import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
 import { DialogEditAnswerComponent } from './dialog-edit-answer/dialog-edit-answer.component';
 import { DialogEditDirectMessageComponent } from './dialog-edit-direct-message/dialog-edit-direct-message.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { DialogEditProfileComponent } from './dialog-edit-profile/dialog-edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { DialogEditDirectMessageComponent } from './dialog-edit-direct-message/d
     SearchUserProfileComponent,
     DialogEditComponent,
     DialogEditAnswerComponent,
-    DialogEditDirectMessageComponent
+    DialogEditDirectMessageComponent,
+    WelcomeComponent,
+    DialogEditProfileComponent
   ],
   imports: [
     BrowserModule,

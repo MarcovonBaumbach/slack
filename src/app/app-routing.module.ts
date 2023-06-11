@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ChannelsComponent } from './channels/channels.component';
 import { DirectMessagesComponent } from './direct-messages/direct-messages.component';
 import { SearchUserProfileComponent } from './search-user-profile/search-user-profile.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
   { path: '', component: InitialPageComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
     path: 'main/:id', component: MainComponent,
     title: 'SlackClone',
     children: [
+      { path: '', component: WelcomeComponent, outlet: 'body' },
       { path: 'profil', component: UserProfileComponent, outlet: 'body' },
       { path: 'profil/:id', component: SearchUserProfileComponent, outlet: 'body' },
       { path: 'channels/:id', component: ChannelsComponent, outlet: 'body' },

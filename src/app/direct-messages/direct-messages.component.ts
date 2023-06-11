@@ -69,9 +69,7 @@ export class DirectMessagesComponent implements OnInit {
       this.pushMessageInArray(newMessages);
       this.updateDatabase(newMessages);      
       this.privateMessage = '';
-      setTimeout(() => {
         this.router.navigateByUrl(`/main/${this.userID}/(body:direct_messages/${this.urlID})`);
-      }, 1000);
     } else window.alert('Bitte fülle das Textfeld aus');   
   }
 

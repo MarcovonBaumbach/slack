@@ -1,4 +1,4 @@
-<div class="user_profile_wrapper">
+<div *ngIf="user" class="user_profile_wrapper">
     <div class="user_profile_img"><img src="./assets/img/user.png"></div>
     <div class="user_profile_infos">
         <h2>{{user.firstName}} {{user.lastName}}</h2>
