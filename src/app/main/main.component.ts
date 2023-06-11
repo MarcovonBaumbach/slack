@@ -1,11 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/models/user.class';
 import { Observable } from 'rxjs';
 import { DialogAddStatusComponent } from '../dialog-add-status/dialog-add-status.component';
-import { Firestore, collection, collectionData, doc, DocumentSnapshot, getDoc, docData } from '@angular/fire/firestore';
-import { get } from '@angular/fire/database';
+import { Firestore, collection, collectionData, doc, DocumentSnapshot, getDoc } from '@angular/fire/firestore';
 import { DataService } from '../data.service';
 
 @Component({
@@ -13,12 +12,13 @@ import { DataService } from '../data.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
+export class MainComponent implements OnInit{
   user = this.dataservice.user;
   users$: Observable<any>;
   urlID: string;
   userRoute: any;
   userStatus: string;
+  userFound: boolean = true;
   logInTime: Date = new Date;
   public userHolder: any;
   color: string;
@@ -31,7 +31,7 @@ export class MainComponent {
     public dialogAddStatus: MatDialog,
     private dataservice: DataService,
     private router: Router) {
-    this.users$ = collectionData(collection(this.firestore, 'users'));
+      this.users$ = collectionData(collection(this.firestore, 'users'));
   }
 
 
@@ -56,46 +56,36 @@ export class MainComponent {
   }
 
   search() {
-    let userFound = false;
     let searchedUser = this.searchValue.split(" ");
     this.users$.forEach((users) => {
-      this.redirectToUserProfileIfExists(users, searchedUser, userFound);    
+      this.redirectToUserProfileIfExists(users, searchedUser);    
       this.searchValue = '';
     });
   }
 
-  redirectToUserProfileIfExists(users, searchedUser, userFound) {
+  redirectToUserProfileIfExists(users, searchedUser) {
+    this.userFound = false;
     for (let i = 0; i < users.length; i++) {
       for (let j = 0; j < searchedUser.length; j++) {
         if (users[i].firstName.toLowerCase().includes(searchedUser[j].toLowerCase()) || 
             users[i].lastName.toLowerCase().includes(searchedUser[j].toLowerCase())) {
+          this.userFound = true;
           this.router.navigateByUrl(`/main/${this.urlID}/(body:profil/${users[i].ID})`);
-          userFound = true;
         }
       }
-    }
-    if (userFound == false) {
-      window.alert('Es wurde kein Kontakt zu Ihrer Eingabe gefunden.');
+      if (this.userFound == false) {
+        setTimeout(() => {
+          this.userFound = true;
+        }, 3000);
+      }
     }
   }
 
-  // getUserStatus() {
-  //   let statusObj;
-  //   if (this.user.status == '') {
-  //     statusObj = { status: 'Active' }
-  //     this.firestore
-  //       .collection('users')
-  //       .doc(this.urlID)
-  //       .update(statusObj)
-  //       .then(() => {
-  //         console.log(this.user);
-
-  //       })
-  //   }
-  // }
-
-
   openDialogAddStatus() {
-    this.dialogAddStatus.open(DialogAddStatusComponent);
+    this.dialogAddStatus.open(DialogAddStatusComponent, {
+      data :{
+        urlID : this.urlID
+      }
+  });
   }
 }

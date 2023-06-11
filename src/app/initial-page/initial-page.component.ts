@@ -21,6 +21,7 @@ export class InitialPageComponent implements OnInit {
   loginForm: any;
   formBuilder: any = new FormBuilder();
   users$: Observable<any>;
+  invalidUser: boolean = false;
 
   constructor(public dialogAddUser: MatDialog, private router: Router, private firestore: Firestore, private dataservice: DataService) {
     this.users$ = collectionData(collection(this.firestore, 'users'), { idField: 'id'});
@@ -53,7 +54,7 @@ export class InitialPageComponent implements OnInit {
         }
       }
       if (!loginSuccessful) {
-        window.alert('Benutzer nicht vorhanden');
+        this.invalidUser = true;
       }
     });
   }

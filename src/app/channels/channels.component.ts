@@ -24,6 +24,8 @@ export class ChannelsComponent implements OnInit {
   docSnap: DocumentSnapshot;
   docSnapUser: DocumentSnapshot;
   message: string;
+  emptyMessage: boolean = false;
+  emptyAnswer: boolean = false;
   answer: string;
   messageIndex: number;
 
@@ -85,6 +87,7 @@ export class ChannelsComponent implements OnInit {
   }
 
   async saveMessage() {
+    this.emptyMessage = false;
     if (this.message) {
       let newMessages = this.channel.messages;
       let date = new Date();
@@ -98,10 +101,13 @@ export class ChannelsComponent implements OnInit {
         messages: newMessages
       });
       this.message = '';
-    } else window.alert('Bitte fülle das Textfeld aus');
+    } else {
+      this.emptyMessage = true;
+    }
   }
 
   async saveAnswer() {
+    this.emptyAnswer = false;
     if (this.answer) {
       let newAnswers = this.channel.messages[this.messageIndex].answers;
       let date = new Date();
@@ -116,7 +122,9 @@ export class ChannelsComponent implements OnInit {
       });
 
       this.answer = '';
-    } else window.alert('Bitte fülle das Textfeld aus');
+    } else {
+      this.emptyAnswer = true;
+    }
   }
 
   openAnswerContainer(index: number) {

@@ -16,6 +16,7 @@
                     <input matInput type="password" formControlName="password" required #passswordSignup>
                 </mat-form-field>
             </div>
+            <mat-error *ngIf="invalidUser">Der Benutzer ist nicht vorhanden, versuche es erneut.</mat-error>
             <div class="button-holder">
                 <button type="button" (click)="onSignup(emailSignup.value, passswordSignup.value)" [disabled]="loginForm.invalid" mat-raised-button color="primary">Login</button>
                 <button type="button" (click)="bypassLogIn()" mat-raised-button>Guest Login</button>

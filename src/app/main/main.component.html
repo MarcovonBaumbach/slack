@@ -13,17 +13,19 @@
                     <mat-panel-title>
                         <input (keydown.Space)="$event.stopPropagation()" [(ngModel)]="searchValue" name="searchValue" placeholder="Search User..." matInput>
                         <mat-icon (click)="search()" mat-button>search</mat-icon>
-                    </mat-panel-title>
+                    </mat-panel-title>      
                 </mat-expansion-panel-header>
                 <!-- <mat-card-actions class="search_history">
                     <button *ngFor="let user of users$ | async" [routerLink]="['/main/', urlID,{ outlets: {body:['profil', user.ID]}}]"># {{user.firstName}} {{user.lastName}}</button>
                     <button></button>
                 </mat-card-actions> -->
             </mat-expansion-panel>
+            <mat-error *ngIf="!userFound" class="error-message">Es wurde kein Kontakt zu Ihrer Eingabe gefunden.</mat-error>
+
         </form>
         <div class="header_right">
-            <button class="header_user_profile" #badge mat-button [matMenuTriggerFor]="myProfile" matBadge="0"
-                matBadgePosition="below"><img src="./assets/img/user.png"></button>
+            <button class="header_user_profile" mat-button [matMenuTriggerFor]="myProfile" matBadge="0" matBadgePosition="below"><img src="./assets/img/user.png"></button>
+    
             <mat-menu class="header_user_menu" #myProfile="matMenu" xPosition="before">
                 <mat-card class="menu_user_profile" >
                     <mat-card-header>

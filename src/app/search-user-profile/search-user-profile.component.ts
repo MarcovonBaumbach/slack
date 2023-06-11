@@ -48,11 +48,4 @@ export class SearchUserProfileComponent implements OnInit{
       });
     })
   }
-
-  // getStatus(status) {
-  //   if(status){
-  //     this.status = 'Active'
-  //   }
-
-  // }
 }

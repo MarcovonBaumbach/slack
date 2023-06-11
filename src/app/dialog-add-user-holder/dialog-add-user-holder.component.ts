@@ -61,6 +61,7 @@ export class DialogAddUserHolderComponent{
     this.user.password = password;
     this.user.telephone = +telephone;
     this.user.color = this.generateColors();
+    this.user.status = 'Active';
   }
 
   addUserToFirestore() {

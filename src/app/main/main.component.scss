@@ -6,7 +6,6 @@ $bg-color-5: rgb(150, 150, 150);
 $bg-color-6: rgb(100, 100, 100);
 $text-color: rgb(200, 200, 200);
 
-
 .logo {
     height: 50px;
     width: auto;
@@ -19,7 +18,6 @@ $text-color: rgb(200, 200, 200);
     width: 100%;
 }
 
-
 .header_wrapper {
     position: relative;
     display: flex;
@@ -31,7 +29,6 @@ $text-color: rgb(200, 200, 200);
     background-color: $bg-color-1;
     overflow: visible;
 }
-
 
 .header_left {
     display: flex;
@@ -54,7 +51,6 @@ $text-color: rgb(200, 200, 200);
         }
     }
 }
-
 
 .header_center {
     width: 400px;
@@ -113,7 +109,6 @@ $text-color: rgb(200, 200, 200);
     }
 }
 
-
 .search_history {
     display: flex;
     flex-direction: column;
@@ -140,7 +135,6 @@ $text-color: rgb(200, 200, 200);
     }
 }
 
-
 .header_right {
     padding-top: 12px;
     padding-right: 20px;
@@ -160,11 +154,6 @@ $text-color: rgb(200, 200, 200);
         
     }
 }
-
-.mat-badge.hide-text .mat-badge-content {
-    color: transparent;
-}
-
 
 // Menu User Profile
 .menu_user_profile {
@@ -220,7 +209,6 @@ $text-color: rgb(200, 200, 200);
     }
 }
 
-
 .menu_profile {
     color: $text-color;
     margin: 10px;
@@ -232,7 +220,6 @@ $text-color: rgb(200, 200, 200);
         cursor: pointer;
     }
 }
-
 
 .menu_logOut {
     display: flex;
@@ -254,8 +241,6 @@ $text-color: rgb(200, 200, 200);
     }
 }
 
-
-
 .sidenav_wrapper {
     width: 100%;
     height: calc(100% - 64px);
@@ -263,9 +248,12 @@ $text-color: rgb(200, 200, 200);
     color: $text-color;
 }
 
-
 .sidenav {
     background-color: $bg-color-3;
     width: 300px;
     padding-left: 8px;
+}
+
+.error-message {
+    font-size: 16px;
 }

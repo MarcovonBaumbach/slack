@@ -30,10 +30,7 @@ export class UserProfileComponent implements OnInit {
     this.users$ = collectionData(this.users);
   }
 
-
-
   ngOnInit(): void {
-    console.log(this.user);
     this.userRoute = this.route.parent.params.subscribe((params) => {
       this.urlID = params['id'];
       this
@@ -43,7 +40,6 @@ export class UserProfileComponent implements OnInit {
         .doc(this.urlID)
         .valueChanges()
         .subscribe((user: any) => {
-          console.log(user);
           this.user = user;
           // this.getStatus(user.status);
         });
@@ -58,12 +54,4 @@ export class UserProfileComponent implements OnInit {
       }
     });
   }
-
-
-  // getStatus(status) {
-  //   if(status){
-  //     this.status = 'Active'
-  //   }
-
-  // }
 }

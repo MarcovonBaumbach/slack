@@ -27,6 +27,7 @@
         <div class="input-container">
             <textarea style="resize: none;" rows="4" type="text" placeholder="private Nachricht"
                 [(ngModel)]="privateMessage"></textarea>
+            <mat-error *ngIf="emptyMessage">Bitte fülle das Textfeld aus.</mat-error>
             <button mat-raised-button (click)="saveMessage()">send</button>
         </div>
     </div>

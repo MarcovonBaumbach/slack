@@ -23,6 +23,7 @@ export class DirectMessagesComponent implements OnInit {
   docSnap: DocumentSnapshot;
   docSnapUser: DocumentSnapshot;
   privateMessage: string;
+  emptyMessage: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -61,6 +62,7 @@ export class DirectMessagesComponent implements OnInit {
   }
 
   saveMessage() {
+    this.emptyMessage = false;
     if (this.privateMessage) {
       let newMessages = []
       if (this.currentUserMessages) {
@@ -70,7 +72,9 @@ export class DirectMessagesComponent implements OnInit {
       this.updateDatabase(newMessages);      
       this.privateMessage = '';
         this.router.navigateByUrl(`/main/${this.userID}/(body:direct_messages/${this.urlID})`);
-    } else window.alert('Bitte fülle das Textfeld aus');   
+    } else {
+      this.emptyMessage = true;
+    }   
   }
 
   async updateDatabase(newMessages) {

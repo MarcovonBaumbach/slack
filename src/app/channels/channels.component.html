@@ -33,6 +33,7 @@
             <div class="input-container">
                 <textarea style="resize: none;" rows="4" type="text" placeholder="Nachricht an #{{ channel.title }}"
                     [(ngModel)]="message"></textarea>
+                <mat-error *ngIf="emptyMessage">Bitte fülle das Textfeld aus.</mat-error>
                 <button mat-raised-button (click)="saveMessage()">send</button>
             </div>
         </div>
@@ -71,6 +72,7 @@
             <div class="input-container input-container-answer">
                 <textarea style="resize: none;" type="text" rows="3" autofocus placeholder="antworten..."
                     [(ngModel)]="answer"></textarea>
+                <mat-error *ngIf="emptyAnswer">Bitte fülle das Textfeld aus.</mat-error>
                 <button mat-raised-button (click)="saveAnswer()">send</button>
             </div>
         </div>

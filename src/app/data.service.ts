@@ -4,12 +4,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
-  user;
+  user: any;
   answerContainer: boolean = false;
   selectedChannel;
   param;
   index;
   constructor() {
-   
   }
 }

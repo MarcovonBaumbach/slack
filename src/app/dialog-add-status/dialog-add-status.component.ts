@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-add-status',
@@ -9,37 +8,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./dialog-add-status.component.scss']
 })
 export class DialogAddStatusComponent {
-  status: string;
-  urlID: any;
+  urlID: string = this.data.urlID;
   userRoute: any;
 
-
   constructor(private firestore: AngularFirestore,
-    private route: ActivatedRoute,
     public dialogRef: MatDialogRef<DialogAddStatusComponent>,
-  ) {
-
-  }
-  ngOnInit() {
-    this.userRoute = location.href
-    console.log(this.userRoute);
-    
-    // this.route.params.subscribe((params) => {
-    //   debugger
-
-    //   this.urlID = params['id'];
-    // })
-  }
+    @Inject(MAT_DIALOG_DATA) public data: {urlID: string}
+  ) {}
 
   selectStatus(value) {
-    this.status = value;
-    console.log(value);
-    console.log(this.status);
-  }
-
-
-  addNewStatus(status) {
-    let statusObj = { status: status }
+    let statusObj = { status: value }
 
     this.firestore
       .collection('users')
