@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/models/user.class';
@@ -12,7 +12,7 @@ import { DataService } from '../data.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit{
+export class MainComponent implements OnInit {
   user = this.dataservice.user;
   users$: Observable<any>;
   urlID: string;
@@ -31,7 +31,7 @@ export class MainComponent implements OnInit{
     public dialogAddStatus: MatDialog,
     private dataservice: DataService,
     private router: Router) {
-      this.users$ = collectionData(collection(this.firestore, 'users'));
+    this.users$ = collectionData(collection(this.firestore, 'users'));
   }
 
 
@@ -58,7 +58,7 @@ export class MainComponent implements OnInit{
   search() {
     let searchedUser = this.searchValue.split(" ");
     this.users$.forEach((users) => {
-      this.redirectToUserProfileIfExists(users, searchedUser);    
+      this.redirectToUserProfileIfExists(users, searchedUser);
       this.searchValue = '';
     });
   }
@@ -67,8 +67,8 @@ export class MainComponent implements OnInit{
     this.userFound = false;
     for (let i = 0; i < users.length; i++) {
       for (let j = 0; j < searchedUser.length; j++) {
-        if (users[i].firstName.toLowerCase().includes(searchedUser[j].toLowerCase()) || 
-            users[i].lastName.toLowerCase().includes(searchedUser[j].toLowerCase())) {
+        if (users[i].firstName.toLowerCase().includes(searchedUser[j].toLowerCase()) ||
+          users[i].lastName.toLowerCase().includes(searchedUser[j].toLowerCase())) {
           this.userFound = true;
           this.router.navigateByUrl(`/main/${this.urlID}/(body:profil/${users[i].ID})`);
         }
@@ -83,9 +83,9 @@ export class MainComponent implements OnInit{
 
   openDialogAddStatus() {
     this.dialogAddStatus.open(DialogAddStatusComponent, {
-      data :{
-        urlID : this.urlID
+      data: {
+        urlID: this.urlID
       }
-  });
+    });
   }
 }

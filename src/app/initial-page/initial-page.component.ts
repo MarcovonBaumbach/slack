@@ -22,6 +22,7 @@ export class InitialPageComponent implements OnInit {
   formBuilder: any = new FormBuilder();
   users$: Observable<any>;
   invalidUser: boolean = false;
+  signUpSuccess: boolean = false;
 
   constructor(public dialogAddUser: MatDialog, private router: Router, private firestore: Firestore, private dataservice: DataService) {
     this.users$ = collectionData(collection(this.firestore, 'users'), { idField: 'id'});
@@ -60,6 +61,13 @@ export class InitialPageComponent implements OnInit {
   }
 
   openDialogAddUser() {
-    this.dialogAddUser.open(DialogAddUserHolderComponent)
+    let dialogRef = this.dialogAddUser.open(DialogAddUserHolderComponent);
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.signUpSuccess = res;
+      if(this.signUpSuccess == true) {
+        window.alert('Sign up war erfolgreich, Sie können sich jetzt einloggen!');
+      }
+    })
   }
 }

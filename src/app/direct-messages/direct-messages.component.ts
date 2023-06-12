@@ -71,7 +71,7 @@ export class DirectMessagesComponent implements OnInit {
       this.pushMessageInArray(newMessages);
       this.updateDatabase(newMessages);      
       this.privateMessage = '';
-        this.router.navigateByUrl(`/main/${this.userID}/(body:direct_messages/${this.urlID})`);
+        //this.router.navigateByUrl(`/main/${this.userID}/(body:direct_messages/${this.urlID})`);
     } else {
       this.emptyMessage = true;
     }   

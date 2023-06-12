@@ -45,7 +45,8 @@ export class DialogAddUserHolderComponent{
 
       this.getFormData(firstName, lastName, email, password, telephone);   
       this.addUserToFirestore();  
-      this.dialogRef.close();
+      let signUpSuccess = true;
+      this.dialogRef.close(signUpSuccess);
     }
 
     this.checkPhoneNumber(telephone, numberformat);
